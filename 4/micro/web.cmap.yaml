@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  index.html: |
+    hola mundo cruel desde carlost 8-)
+
+    Salu2
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: web-assets

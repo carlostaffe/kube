@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: syncthing-mono
+  name: syncthing-mono
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: syncthing-mono
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: syncthing-mono
+    spec:
+      containers:
+      - image: linuxserver/syncthing
+        name: syncthing-mono
+        resources: {}
+status: {}

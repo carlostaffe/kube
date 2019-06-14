@@ -1,0 +1,14 @@
+kubectl run --image=linuxserver/syncthing syncthing-mono --dry-run -oyaml > 00-syncthing-mono.yaml
+kubectl apply -f syncthing-mono.yaml
+kubectl logs syncthing-mono-xxxxxxxx-yyyyy
+de ahi leemos :
+[ZWNFH] 03:01:06 INFO: My ID: ZWNFHXR-GG6YA7W-N7DZDLJ-4J2ZRN4-CFWPCN4-RKKT527-2W5BVVZ-FWLQPA5
+
+publico temporalmente (usando la api)
+kubectl port-forward syncthing-mono-xxxxxxxx-yyyyy 18384:8384 
+
+consulta de toooooodo
+
+kubectl get pods,deploy,statefulset,PersistentVolumeClaim,services,endpoints,replicaset,configmap,secrets,ingress -owide
+
+

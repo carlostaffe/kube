@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: List
+items:
+- apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+    name: kabo
+  spec:
+    rules:
+      # - host: maquinola.com.ar
+      - http:
+          paths:
+            - path: /
+              backend:
+                serviceName: kabo
+                servicePort: 80

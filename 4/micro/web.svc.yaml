@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    run: web
+  name: web
+spec:
+  ports:
+  - port: 80 #puerto del mini loadbalancer
+    protocol: TCP
+    targetPort: 8080 #puerto de los podsitos 
+  selector:
+    run: web # nombre del deploy
+status:
+  loadBalancer: {}

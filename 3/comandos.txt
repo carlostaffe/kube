@@ -1,0 +1,38 @@
+kubectl get node
+kubectl version --short
+kubectl config 
+kubectl config current-context
+less /home/carlost/.kube/config 
+kubectl version --short
+kubectl get componentstatus
+kubectl get nodes
+kubectl delete node kube-um-k8s-master-1
+kubectl delete node kube-um-k8s-node-nf-2
+kubectl auth can-i delete node
+kubectl auth can-i list node
+kubectl auth can-i get 
+kubectl get nodes kube-um-k8s-master-1  -o yaml
+kubectl get nodes kube-um-k8s-master-1  -o yaml| less
+kubectl explain pod
+kubectl run -- restart=Never --image=nginx pod1
+kubectl run --restart=Never --image=nginx pod1
+kubectl get pod
+kubectl get pod --all-namespaces | less
+kubectl describe pod pod1
+kubectl describe pod pod1 | less
+kubectl get pod pod1 
+kubectl get pod pod1 -o yaml | less
+kubectl delete pod pod1 
+kubectl get pod
+kubectl run --restart=Never --image=nginx pod2
+kubectl get pod
+kubectl get pod pod1 -o yaml | less
+kubectl get pod pod2 -o wide
+kubectl get pod pod2 -o wide --show-labels 
+kubectl get pod pod2 -o wide --show-labels --all-namespaces
+kubectl get pod --all-namespaces -o wide --show-labels
+kubectl get pod -o json
+kubectl get pod -o json | jq '.items[].metadata.name'
+kubectl get pod -o json | jq '.items[].metadata.name' -r
+kubectl exec -it pod2 --bash
+kubectl exec -it pod2 -- bash

@@ -1,0 +1,66 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "2"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"kubernetes.io/change-cause":"kubectl apply --filename=www.deploy.yaml --record=true"},"creationTimestamp":null,"labels":{"run":"www"},"name":"www","namespace":"carlostaffe"},"spec":{"replicas":3,"selector":{"matchLabels":{"run":"www"}},"strategy":{},"template":{"metadata":{"creationTimestamp":null,"labels":{"run":"www"}},"spec":{"containers":[{"image":"bitnami/nginx:1.14.0","name":"www","resources":{}}]}}},"status":{}}
+    kubernetes.io/change-cause: kubectl apply --filename=www.deploy.yaml --record=true
+  creationTimestamp: "2019-06-03T15:46:13Z"
+  generation: 3
+  labels:
+    run: www
+  name: www
+  namespace: carlostaffe
+  resourceVersion: "34174304"
+  selfLink: /apis/extensions/v1beta1/namespaces/carlostaffe/deployments/www
+  uid: b7381de7-8616-11e9-8e25-fa163e921399
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      run: www
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: www
+    spec:
+      containers:
+      - image: bitnami/nginx:1.14.0
+        imagePullPolicy: IfNotPresent
+        name: www
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2019-06-03T15:47:00Z"
+    lastUpdateTime: "2019-06-03T15:47:00Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2019-06-03T15:46:13Z"
+    lastUpdateTime: "2019-06-03T15:47:11Z"
+    message: ReplicaSet "www-575bd66d6c" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 3
+  readyReplicas: 3
+  replicas: 3
+  updatedReplicas: 3
