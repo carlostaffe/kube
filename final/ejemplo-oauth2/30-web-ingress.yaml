@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    certmanager.k8s.io/acme-challenge-type: http01
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    ingress.kubernetes.io/auth-url: https://auth.carlostaffe.kube.um.edu.ar/oauth2/auth
+    ingress.kubernetes.io/auth-signin: https://auth.carlostaffe.kube.um.edu.ar/oauth2/start?rd=https://$host$request_uri$is_args$args
+  name: web
+spec:
+  rules:
+  - host: www.carlostaffe.kube.um.edu.ar
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: web
+          servicePort: 8080
+  tls:
+  - hosts:
+    - www.carlostaffe.kube.um.edu.ar
+    secretName: web-carlostaffe-kube-um-cert

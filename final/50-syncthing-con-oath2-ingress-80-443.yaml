@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+  name: syncthing-sts
+  namespace: carlostaffe
+spec:
+  rules:
+  - host: syncthing.carlostaffe.kube.um.edu.ar
+    http:
+      paths:
+      - backend:
+          serviceName: syncthing-sts
+          servicePort: 8384
+        path: /
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: test-oauth2-proxy
+  namespace: carlostaffe
+spec:
+  rules:
+  - host: syncthing.carlostaffe.kube.um.edu.ar
+    http:
+      paths:
+      - backend:
+          serviceName: test-oauth2-proxy
+          servicePort: 4180
+        path: /oauth2
+  tls:
+  - hosts:
+    - syncthing.carlostaffe.kube.um.edu.ar
+    secretName: syncthing-kube-um-cert

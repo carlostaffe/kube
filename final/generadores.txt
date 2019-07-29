@@ -11,4 +11,51 @@ consulta de toooooodo
 
 kubectl get pods,deploy,statefulset,PersistentVolumeClaim,services,endpoints,replicaset,configmap,secrets,ingress -owide
 
+kubectl create secret generic oauth2-proxy-secret --from-literal=cookie-secret=JfBnh-Njot-J5tfdJ9V0sw== --from-literal=client-id=6fccfcdafd1b0bb38b65 --from-literal=client-secret=4a3974b5a8e28ab9bb6e3144a71b1df020d93360  -o yaml --dry-run > auth2-proxy-secrets.txt
+
+  missing setting: cookie-secret
+python -c 'import os,base64; print base64.urlsafe_b64encode(os.urandom(16))'
+sacado de https://pusher.github.io/oauth2_proxy/docs/configuration
+                  JfBnh-Njot-J5tfdJ9V0sw==
+  missing setting: client-id
+sacado de https://pusher.github.io/oauth2_proxy/auth-configuration#github-auth-provider
+                   6fccfcdafd1b0bb38b65
+  missing setting: client-secret
+                   4a3974b5a8e28ab9bb6e3144a71b1df020d93360
+
+para https, modificar ingress ... agregar un par de annotations, y tls en spec:
+Obiamente tener instalado como pod un cert-manager
+mas info aca .... https://github.com/jetstack/cert-manager
+
+
+
+Create a new project: https://console.developers.google.com/project
+Choose the new project from the top right project dropdown (only if another project is selected)
+In the project Dashboard center pane, choose “API Manager”
+In the left Nav pane, choose “Credentials”
+In the center pane, choose “OAuth consent screen” tab. Fill in “Product name shown to users” and hit save.
+In the center pane, choose “Credentials” tab.
+
+    Open the “New credentials” drop down
+    Choose “OAuth client ID”
+    Choose “Web application”
+
+        - --client-secret=cuOTfvDOOQfpr7strUOJfbCh
+        - --client-id=1087886107719-04855ehlnofcku1h0rtuqlsva5p0k2to.apps.googleusercontent.com
+        - --provider=google
+        - --whitelist-domain=".um.edu.ar"  #si no lo agrego de access deny !!!! https://github.com/pusher/oauth2_proxy/issues/74
+
+kubectl create secret generic oauth2-proxy-secret --from-literal=cookie-secret=JfBnh-Njot-J5tfdJ9V0sw== --from-literal=client-id=1087886107719-04855ehlnofcku1h0rtuqlsva5p0k2to.apps.googleusercontent.com --from-literal=client-secret=cuOTfvDOOQfpr7strUOJfbCh -o yaml --dry-run > auth2-proxy-secrets.txt
+
+de https://pusher.github.io/oauth2_proxy/docs/configuration estas son las Environment variables
+        OAUTH2_PROXY_CLIENT_ID
+        OAUTH2_PROXY_CLIENT_SECRET
+        OAUTH2_PROXY_COOKIE_SECRET
+
+adicionalmente valido lista de usuarios de un archivo ... 1 por linea  (https://github.com/bitly/oauth2_proxy)
+
+        --authenticated-emails-file
+
+inyectar el archivo en un configmap
+kubectl create configmap mails-ok --from-file=mails_ok.txt -o yaml --dry-run > configmap-mails-ok.yaml
 

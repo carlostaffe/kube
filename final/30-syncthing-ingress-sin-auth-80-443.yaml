@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    certmanager.k8s.io/acme-challenge-type: http01
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+#    nginx.ingress.kubernetes.io/auth-response-headers: Authorization
+#    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+#    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  generation: 1
+  name: syncthing-sts
+  namespace: carlostaffe
+spec:
+  rules:
+  - host: syncthing.carlostaffe.kube.um.edu.ar
+    http:
+      paths:
+      - backend:
+          serviceName: syncthing-sts
+          servicePort: 8384
+        path: /
+  tls:
+  - hosts:
+    - syncthing.carlostaffe.kube.um.edu.ar
+    secretName: syncthing-kube-um-cert

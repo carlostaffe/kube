@@ -1,0 +1,55 @@
+apiVersion: v1
+data:
+  cert.pem: "-----BEGIN CERTIFICATE-----\r\nMIIBmjCCASCgAwIBAgIIOL6ib6lr7TIwCgYIKoZIzj0EAwIwFDESMBAGA1UEAxMJ\r\nc3luY3RoaW5nMB4XDTE5MDYxOTE1MDkyNVoXDTQ5MTIzMTIzNTk1OVowFDESMBAG\r\nA1UEAxMJc3luY3RoaW5nMHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEMvCPI1Q+hl14\r\nJsNt15ZcV+iPZ2LEHaf2Cjaz92VJ2kVrhFehUDp9vQKpetc4d//AbCKo0dnIgvZd\r\nmk+xRQBsQUwDWCARFc4srT8RrRp2aQbqGbnistM1a6SKI1IXp0Fcoz8wPTAOBgNV\r\nHQ8BAf8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMAwGA1Ud\r\nEwEB/wQCMAAwCgYIKoZIzj0EAwIDaAAwZQIxAMIMZquXvaXPiYMPdLajbKiRv+Q0\r\nGOGT5ZX7oWXs7ohNhWv7uV8Oj0mk1oS/JemlrgIwRWLE4CX6xDlQr0WPOHxl15w5\r\nESlsnQ1TAfHXNQjj336bE2T0PbiTlZhxX6xRElx3\r\n-----END
+    CERTIFICATE-----\r\n"
+  config.xml: "<configuration version=\"28\">\r\n    <folder id=\"default\" label=\"Default
+    Folder\" path=\"/config/Sync\" type=\"sendreceive\" rescanIntervalS=\"3600\" fsWatcherEnabled=\"true\"
+    fsWatcherDelayS=\"10\" ignorePerms=\"false\" autoNormalize=\"true\">\r\n        <filesystemType>basic</filesystemType>\r\n
+    \       <device id=\"CWXTFK4-NHMFC75-DPXD3RE-JJUIKMU-GIXPDT7-5ZCCHI4-K5NFJXD-OMY4GQY\"
+    introducedBy=\"\"></device>\r\n        <device id=\"ZIYEYR3-C6EUTA4-GYKGHVV-VIKXKMO-7IMFBE6-7FE3ALC-M5ZKCLZ-BJBQRQL\"
+    introducedBy=\"\"></device>\r\n        <minDiskFree unit=\"%\">1</minDiskFree>\r\n
+    \       <versioning></versioning>\r\n        <copiers>0</copiers>\r\n        <pullerMaxPendingKiB>0</pullerMaxPendingKiB>\r\n
+    \       <hashers>0</hashers>\r\n        <order>random</order>\r\n        <ignoreDelete>false</ignoreDelete>\r\n
+    \       <scanProgressIntervalS>0</scanProgressIntervalS>\r\n        <pullerPauseS>0</pullerPauseS>\r\n
+    \       <maxConflicts>-1</maxConflicts>\r\n        <disableSparseFiles>false</disableSparseFiles>\r\n
+    \       <disableTempIndexes>false</disableTempIndexes>\r\n        <paused>false</paused>\r\n
+    \       <weakHashThresholdPct>25</weakHashThresholdPct>\r\n        <markerName>.stfolder</markerName>\r\n
+    \       <useLargeBlocks>true</useLargeBlocks>\r\n        <copyOwnershipFromParent>false</copyOwnershipFromParent>\r\n
+    \   </folder>\r\n    <device id=\"CWXTFK4-NHMFC75-DPXD3RE-JJUIKMU-GIXPDT7-5ZCCHI4-K5NFJXD-OMY4GQY\"
+    name=\"sync-fierrazo\" compression=\"metadata\" introducer=\"true\" skipIntroductionRemovals=\"false\"
+    introducedBy=\"\">\r\n        <address>dynamic</address>\r\n        <paused>false</paused>\r\n
+    \       <autoAcceptFolders>true</autoAcceptFolders>\r\n        <maxSendKbps>0</maxSendKbps>\r\n
+    \       <maxRecvKbps>0</maxRecvKbps>\r\n        <maxRequestKiB>0</maxRequestKiB>\r\n
+    \   </device>\r\n    <device id=\"ZIYEYR3-C6EUTA4-GYKGHVV-VIKXKMO-7IMFBE6-7FE3ALC-M5ZKCLZ-BJBQRQL\"
+    name=\"syncthing-sts-0\" compression=\"metadata\" introducer=\"false\" skipIntroductionRemovals=\"false\"
+    introducedBy=\"\">\r\n        <address>dynamic</address>\r\n        <paused>false</paused>\r\n
+    \       <autoAcceptFolders>false</autoAcceptFolders>\r\n        <maxSendKbps>0</maxSendKbps>\r\n
+    \       <maxRecvKbps>0</maxRecvKbps>\r\n        <maxRequestKiB>0</maxRequestKiB>\r\n
+    \   </device>\r\n    <gui enabled=\"true\" tls=\"false\" debugging=\"false\">\r\n
+    \       <address>127.0.0.1:8384</address>\r\n        <apikey>CxWF3sHqcnHJZ9bEefZRDRQYfRhU5KwZ</apikey>\r\n
+    \       <theme>default</theme>\r\n    </gui>\r\n    <ldap></ldap>\r\n    <options>\r\n
+    \       <listenAddress>default</listenAddress>\r\n        <globalAnnounceServer>default</globalAnnounceServer>\r\n
+    \       <globalAnnounceEnabled>true</globalAnnounceEnabled>\r\n        <localAnnounceEnabled>true</localAnnounceEnabled>\r\n
+    \       <localAnnouncePort>21027</localAnnouncePort>\r\n        <localAnnounceMCAddr>[ff12::8384]:21027</localAnnounceMCAddr>\r\n
+    \       <maxSendKbps>0</maxSendKbps>\r\n        <maxRecvKbps>0</maxRecvKbps>\r\n
+    \       <reconnectionIntervalS>60</reconnectionIntervalS>\r\n        <relaysEnabled>true</relaysEnabled>\r\n
+    \       <relayReconnectIntervalM>10</relayReconnectIntervalM>\r\n        <startBrowser>true</startBrowser>\r\n
+    \       <natEnabled>true</natEnabled>\r\n        <natLeaseMinutes>60</natLeaseMinutes>\r\n
+    \       <natRenewalMinutes>30</natRenewalMinutes>\r\n        <natTimeoutSeconds>10</natTimeoutSeconds>\r\n
+    \       <urAccepted>3</urAccepted>\r\n        <urSeen>3</urSeen>\r\n        <urUniqueID>uzfkDmik</urUniqueID>\r\n
+    \       <urURL>https://data.syncthing.net/newdata</urURL>\r\n        <urPostInsecurely>false</urPostInsecurely>\r\n
+    \       <urInitialDelayS>1800</urInitialDelayS>\r\n        <restartOnWakeup>true</restartOnWakeup>\r\n
+    \       <autoUpgradeIntervalH>12</autoUpgradeIntervalH>\r\n        <upgradeToPreReleases>false</upgradeToPreReleases>\r\n
+    \       <keepTemporariesH>24</keepTemporariesH>\r\n        <cacheIgnoredFiles>false</cacheIgnoredFiles>\r\n
+    \       <progressUpdateIntervalS>5</progressUpdateIntervalS>\r\n        <limitBandwidthInLan>false</limitBandwidthInLan>\r\n
+    \       <minHomeDiskFree unit=\"%\">1</minHomeDiskFree>\r\n        <releasesURL>https://upgrades.syncthing.net/meta.json</releasesURL>\r\n
+    \       <overwriteRemoteDeviceNamesOnConnect>false</overwriteRemoteDeviceNamesOnConnect>\r\n
+    \       <tempIndexMinBlocks>10</tempIndexMinBlocks>\r\n        <trafficClass>0</trafficClass>\r\n
+    \       <defaultFolderPath>~</defaultFolderPath>\r\n        <setLowPriority>true</setLowPriority>\r\n
+    \       <maxConcurrentScans>0</maxConcurrentScans>\r\n    </options>\r\n</configuration>\r\n"
+  key.pem: "-----BEGIN EC PRIVATE KEY-----\r\nMIGkAgEBBDBZNUnDwqo2BbhT0gRz8XlYl13bmaZVdXQr5KBKkLrXhA/GggDSqDPI\r\nPqoNZqbhpKqgBwYFK4EEACKhZANiAAQy8I8jVD6GXXgmw23XllxX6I9nYsQdp/YK\r\nNrP3ZUnaRWuEV6FQOn29Aql61zh3/8BsIqjR2ciC9l2aT7FFAGxBTANYIBEVziyt\r\nPxGtGnZpBuoZueKy0zVrpIojUhenQVw=\r\n-----END
+    EC PRIVATE KEY-----\r\n"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: syncthing-conf

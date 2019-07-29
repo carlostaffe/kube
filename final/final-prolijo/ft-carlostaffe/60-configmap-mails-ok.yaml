@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  mails-ok.txt: |
+    juanjosec@gmail.com
+    navarrow@gmail.com
+    carlos.taffe@gmail.com
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: mails-ok

@@ -22,25 +22,27 @@ spec:
           ports:
             - containerPort: 8384
           volumeMounts:
-            - mountPath: "/config"
-              name: rsync-id
+            - mountPath: "/tmp"
+              name: rsync-config-data
+            - mountPath: "/config/custom-cont-init.d"
+              name: rsync-config-script
             - mountPath: "/config/Sync"
               name: rsync-data
             - mountPath: "/data1"
               name: rsync-data1
-              #          - mountPath: "/data2"
-              #name: rsync-data2
+            - mountPath: "/data2"
+              name: rsync-data2
+      volumes:
+        - configMap:
+            name: syncthing-conf
+          name: rsync-config-data
+        - configMap:
+            name: syncthing-script
+          name: rsync-config-script
+
   volumeClaimTemplates:
    - metadata:
        name: rsync-data
-     spec:
-       accessModes: [ "ReadWriteOnce" ]
-       #storageClassName: "openebs-standalone"
-       resources:
-         requests:
-           storage: 1Gi
-   - metadata:
-       name: rsync-id
      spec:
        accessModes: [ "ReadWriteOnce" ]
        #storageClassName: "openebs-standalone"

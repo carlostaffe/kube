@@ -8,10 +8,39 @@ docker create \
   -p 8384:8384 \
   -p 22000:22000 \
   -p 21027:21027/udp \
-  -v /tmp/config:/config \
+  -v /home/carlost/doctorado/cloud/syncthing/config:/config \
   -v /tmp/data1:/data1 \
   -v /tmp/data2:/data2 \
   --restart unless-stopped \
   linuxserver/syncthing
 
 Recreate a new container with the same docker create parameters as instructed above (if mapped correctly to a host folder, your /config folder and settings will be preserved)
+
+
+docker pull bitnami/oauth2-proxy
+docker run -e "OAUTH2_PROXY_CLIENT_ID=6fccfcdafd1b0bb38b65" -e "OAUTH2_PROXY_CLIENT_SECRET=4a3974b5a8e28ab9bb6e3144a71b1df020d93360" -e "OAUTH2_PROXY_COOKIE_SECRET=JfBnh-Njot-J5tfdJ9V0sw==" -e "OAUTH2_PROXY_COOKIE_DOMAIN=*" --name oauth2-proxy bitnami/oauth2-proxy:latest
+
+OAUTH2_PROXY_CLIENT_ID
+OAUTH2_PROXY_CLIENT_SECRET
+OAUTH2_PROXY_COOKIE_NAME
+OAUTH2_PROXY_COOKIE_SECRET
+OAUTH2_PROXY_COOKIE_DOMAIN
+
+
+FALTA SETEO 
+  missing setting: cookie-secret
+python -c 'import os,base64; print base64.urlsafe_b64encode(os.urandom(16))'
+sacado de https://pusher.github.io/oauth2_proxy/docs/configuration
+                  JfBnh-Njot-J5tfdJ9V0sw==
+  missing setting: client-id
+sacado de https://pusher.github.io/oauth2_proxy/auth-configuration#github-auth-provider
+		   6fccfcdafd1b0bb38b65
+  missing setting: client-secret
+		   4a3974b5a8e28ab9bb6e3144a71b1df020d93360
+
+  missing setting for email validation: email-domain or authenticated-emails-file required.
+      use email-domain=* to authorize all email addresses
+
+
+para probar .... 
+./oauth2_proxy --cookie-secret=JfBnh-Njot-J5tfdJ9V0sw== --client-id=6fccfcdafd1b0bb38b65 --client-secret=4a3974b5a8e28ab9bb6e3144a71b1df020d93360 --email-domain=* --provider=github --redirect-url http://syncthing.carlostaffe.kube.um.edu.ar/

@@ -1,0 +1,12 @@
+apiVersion: v1 
+kind: Service 
+metadata: 
+  name: syncthing-sts 
+  labels: 
+    run: syncthing-sts 
+spec: 
+  ports: 
+  - port: 8384 
+    name: syncthing-sts 
+  selector: 
+    run: syncthing-sts 

@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  script.sh: |
+    #!/bin/bash
+    cp /tmp/config.xml /config/config.xml
+    cp /tmp/cert.pem /config/cert.pem
+    cp /tmp/key.pem /config/key.pem
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: syncthing-script

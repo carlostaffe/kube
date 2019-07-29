@@ -1,0 +1,46 @@
+## This is test deployment for Kubernetes platforms.
+## This is _not_ intended to be use in producction.
+##
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: test-oauth2-proxy
+  name: test-oauth2-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-oauth2-proxy
+  template:
+    metadata:
+      labels:
+        app: test-oauth2-proxy
+    spec:
+      containers:
+      - image: bitnami/oauth2-proxy
+        name: oauth2-proxy
+        args:
+        - --email-domain=*
+          #        - --cookie-secure=false
+        - --cookie-secret=JfBnh-Njot-J5tfdJ9V0sw==
+        - --client-secret=4a3974b5a8e28ab9bb6e3144a71b1df020d93360
+        - --client-id=6fccfcdafd1b0bb38b65
+        - --provider=github
+          #- --redirect-url=https://syncthing.carlostaffe.kube.um.edu.ar/auth2/callback
+        - --http-address=0.0.0.0:4180
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: test-oauth2-proxy
+  name: test-oauth2-proxy
+spec:
+  ports:
+  - port: 4180
+    protocol: TCP
+    targetPort: 4180
+  selector:
+    app: test-oauth2-proxy
+  type: ClusterIP
